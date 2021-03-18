@@ -1,5 +1,4 @@
 FROM alpine:latest
-MAINTAINER Martin Peters
 
 ARG USER=ncsync
 ARG USER_UID=1000

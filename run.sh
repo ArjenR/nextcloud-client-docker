@@ -7,6 +7,8 @@ chown -R $USER:$USER $NC_SOURCE_DIR
 
 while true
 do
-	/bin/su -s /bin/ash $USER -c 'nextcloudcmd $( [ $NC_SILENT == true ] && echo "--silent" ) $( [ $NC_TRUST_CERT == true ] && echo "--trust" ) --non-interactive -u $NC_USER -p $NC_PASS $NC_SOURCE_DIR $NC_URL'
-	sleep 300
+	echo "Executing nextcloud client."
+	/bin/su -s /bin/ash $USER -c 'ionice -c3 nice -9 nextcloudcmd $( [ $NC_SILENT == true ] && echo "--silent" ) $( [ $NC_TRUST_CERT == true ] && echo "--trust" ) --non-interactive -u $NC_USER -p $NC_PASS $NC_SOURCE_DIR $NC_URL'
+	echo "Finished nextcloud sync."
+	sleep 3000
 done
